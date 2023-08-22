@@ -5,9 +5,22 @@ class NameOFProject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => di.sl<PostsBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => di.sl<AddDeleteUpdatePostBloc>(),
+          ),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: HomePage(),
+        ));
   }
+}
+
+Widget HomePage() {
+  return Scaffold();
 }

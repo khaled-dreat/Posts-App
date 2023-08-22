@@ -19,14 +19,14 @@ class PostRepositoryImpl implements PostsRepository {
         localDataSource.cashePost(remotePost);
         return Right(remotePost);
       } on ServerException {
-        return Left(ServerFilure());
+        return Left(ServerFailure());
       }
     } else {
       try {
         final localPosts = await localDataSource.getCachedPosts();
         return Right(localPosts);
       } on EmpttyCacheException {
-        return Left(EmptyCacheFilure());
+        return Left(EmptyCacheFailure());
       }
     }
   }
@@ -69,10 +69,10 @@ class PostRepositoryImpl implements PostsRepository {
 
         return const Right(unit);
       } on ServerException {
-        return Left(ServerFilure());
+        return Left(ServerFailure());
       }
     } else {
-      return Left(OfflineFilure());
+      return Left(OfflineFailure());
     }
   }
 }
