@@ -15,9 +15,9 @@ class PostRepositoryImpl implements PostsRepository {
   Future<Either<Failure, List<Post>>> getAllPosts() async {
     if (await networkInfo.isConnected) {
       try {
-        final remotePost = await remoteDataSource.getAllPosts();
-        localDataSource.cashePost(remotePost);
-        return Right(remotePost);
+        final remotePosts = await remoteDataSource.getAllPosts();
+        localDataSource.cashePost(remotePosts);
+        return Right(remotePosts);
       } on ServerException {
         return Left(ServerFailure());
       }
@@ -34,7 +34,7 @@ class PostRepositoryImpl implements PostsRepository {
   @override
   EitherType addPost(Post post) async {
     final PostModel postModel =
-        PostModel(id: post.id, title: post.title, body: post.body);
+        PostModel(iD: post.iD, title: post.title, body: post.body);
     return await _getMessage(
       () {
         return remoteDataSource.addPost(postModel);
@@ -54,7 +54,7 @@ class PostRepositoryImpl implements PostsRepository {
   @override
   EitherType updatePost(Post post) async {
     final PostModel postModel =
-        PostModel(id: post.id, title: post.title, body: post.body);
+        PostModel(iD: post.iD, title: post.title, body: post.body);
     return await _getMessage(
       () {
         return remoteDataSource.updatePost(postModel);

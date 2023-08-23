@@ -17,13 +17,19 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
 
   @override
   Future<List<PostModel>> getAllPosts() async {
-    final response = await client.get(Uri.parse("$baseUrl/posts/"),
-        headers: {"content-Type": "appliction/json"});
+    final response = await client.get(
+      Uri.parse("$baseUrl/posts/"),
+      headers: {"Content-Type": "application/json"},
+    );
+    dev.log(response.body);
+
     if (response.statusCode == 200) {
-      final List decodedJson = jsonDecode(response.body);
+      final List decodedJson = json.decode(response.body) as List;
       final List<PostModel> postModels = decodedJson
-          .map((jsonPostModel) => PostModel.fromJson(jsonPostModel))
+          .map<PostModel>((jsonPostModel) => PostModel.fromJson(jsonPostModel))
           .toList();
+      dev.log(decodedJson.toString());
+
       return postModels;
     } else {
       throw ServerException();
@@ -55,7 +61,7 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
 
   @override
   Future<Unit> updatePost(PostModel postModel) async {
-    final postId = postModel.id.toString();
+    final postId = postModel.iD.toString();
     final body = {"title": postModel.title, "body": postModel.body};
     final response =
         await client.patch(Uri.parse("$baseUrl/posts/$postId"), body: body);

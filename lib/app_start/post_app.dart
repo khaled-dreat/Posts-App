@@ -8,19 +8,15 @@ class NameOFProject extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => di.sl<PostsBloc>(),
+            create: (_) => di.sl<PostsBloc>()..add(GetAllPostsEvent()),
           ),
           BlocProvider(
-            create: (context) => di.sl<AddDeleteUpdatePostBloc>(),
+            create: (_) => di.sl<AddDeleteUpdatePostBloc>(),
           ),
         ],
-        child: MaterialApp(
+        child: const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: HomePage(),
+          home: PostPage(),
         ));
   }
-}
-
-Widget HomePage() {
-  return Scaffold();
 }

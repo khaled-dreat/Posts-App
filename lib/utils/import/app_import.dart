@@ -3,13 +3,12 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:post_app/core/strings/messages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //  ************************ AS & SHOW **************************
 //import 'dart:io' show Directory, Platform, SocketException;
-//import 'dart:developer' as dev;
+import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
 import '../../injection_contaner.dart' as di;
 //import 'dart:convert' as convert;
@@ -47,7 +46,8 @@ part '../../features/posts/data/model/m_post.dart';
 // ? ************************ Entities *********************
 part '../../features/posts/domain/entities/post.dart';
 
-// ! ************************ View **************************
+// ! ************************ Page **************************
+part '../../features/posts/presentaion/page/home/body.dart';
 
 // ? ************************ Bloc ****************
 part '../../features/posts/presentaion/bloc/posts/posts_event.dart';
@@ -57,5 +57,9 @@ part '../../features/posts/presentaion/bloc/add_delete_update_post/add_delete_up
 part '../../features/posts/presentaion/bloc/add_delete_update_post/add_delete_update_post_state.dart';
 part '../../features/posts/presentaion/bloc/add_delete_update_post/add_delete_update_post_bloc.dart';
 
-// ! ************************ Injection **************************
-//part '../../injection_contaner.dart';
+// ! ************************ Widgets **************************
+part '../../features/posts/presentaion/page/home/widgets/app_bar/appbar_home.dart';
+part '../../features/posts/presentaion/page/home/loading_widget.dart';
+part '../../features/posts/presentaion/page/home/message_desplay.dart';
+part '../../features/posts/presentaion/page/home/apost_list_widget.dart';
+part '../../features/posts/presentaion/page/home/widgets/floting_btn/floting_custom.dart';

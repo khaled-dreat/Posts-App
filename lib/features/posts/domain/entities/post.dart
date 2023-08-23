@@ -1,11 +1,11 @@
 part of '../../../../utils/import/app_import.dart';
 
 class Post extends Equatable {
-  final int id;
+  final int iD;
   final String title;
   final String body;
   const Post({
-    required this.id,
+    required this.iD,
     required this.title,
     required this.body,
   });
