@@ -1,12 +1,14 @@
 part of '../../../../../utils/import/app_import.dart';
 
 class PostPage extends StatelessWidget {
+  static const String nameRoute = "PostPage";
+
   const PostPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const HomeAppBar(),
+      appBar: const HomeAppBar(title: "Posts"),
       body: Padding(
           padding: const EdgeInsets.all(10),
           child: BlocBuilder<PostsBloc, PostsState>(
@@ -23,7 +25,10 @@ class PostPage extends StatelessWidget {
               return const LoadingWidget();
             },
           )),
-      floatingActionButton: const CustomFloting(),
+      floatingActionButton: CustomFloting(
+        onPressed: () => AppRoutes.goMaterial(
+            context, const AddUpdatePostPage(isUpdatePost: false)),
+      ),
     );
   }
 

@@ -1,7 +1,7 @@
 part of '../utils/import/app_import.dart';
 
-class NameOFProject extends StatelessWidget {
-  const NameOFProject({super.key});
+class PostApp extends StatelessWidget {
+  const PostApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,10 @@ class NameOFProject extends StatelessWidget {
             create: (_) => di.sl<AddDeleteUpdatePostBloc>(),
           ),
         ],
-        child: const MaterialApp(
+        child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: PostPage(),
+          routes: AppRoutes.routes,
+          initialRoute: AppRoutes.initRoute,
         ));
   }
 }

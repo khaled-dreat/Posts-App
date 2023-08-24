@@ -2,10 +2,14 @@ part of '../import/app_import.dart';
 
 class AppRoutes {
   // * Pages  App
-  static Map<String, WidgetBuilder> routes = {};
+  static Map<String, WidgetBuilder> routes = {
+    PostPage.nameRoute: (context) => const PostPage(),
+    AddUpdatePostPage.nameRoute: (context) => const AddUpdatePostPage(),
+    PostDetailsPage.nameRoute: (context) => const PostDetailsPage(),
+  };
 
   // * inti Route
-  static String? get initRoute => "";
+  static String? get initRoute => PostPage.nameRoute;
 
   // * push Name
   static void go(BuildContext context, String nameRoute) =>

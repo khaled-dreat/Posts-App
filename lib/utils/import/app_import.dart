@@ -4,12 +4,15 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:post_app/core/strings/messages.dart';
+import '../../core/strings/messages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //  ************************ AS & SHOW **************************
 //import 'dart:io' show Directory, Platform, SocketException;
 import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import '../../features/posts/presentaion/page/add_update_/widgets/custom_form.dart';
 import '../../injection_contaner.dart' as di;
 //import 'dart:convert' as convert;
 //import 'package:path_provider/path_provider.dart' as dir;
@@ -48,7 +51,8 @@ part '../../features/posts/domain/entities/post.dart';
 
 // ! ************************ Page **************************
 part '../../features/posts/presentaion/page/home/body.dart';
-
+part '../../features/posts/presentaion/page/details_post/body.dart';
+part "../../features/posts/presentaion/page/add_update_/body.dart";
 // ? ************************ Bloc ****************
 part '../../features/posts/presentaion/bloc/posts/posts_event.dart';
 part '../../features/posts/presentaion/bloc/posts/posts_bloc.dart';
@@ -63,3 +67,9 @@ part '../../features/posts/presentaion/page/home/loading_widget.dart';
 part '../../features/posts/presentaion/page/home/message_desplay.dart';
 part '../../features/posts/presentaion/page/home/apost_list_widget.dart';
 part '../../features/posts/presentaion/page/home/widgets/floting_btn/floting_custom.dart';
+part '../../features/posts/presentaion/widgets/snackbar/app_snackbar.dart';
+part '../../features/posts/presentaion/page/add_update_/widgets/custom_text_form_field.dart';
+part "../../features/posts/presentaion/page/details_post/widgets/post_details_widget.dart";
+part "../../features/posts/presentaion/page/details_post/widgets/delete_dialog_widget.dart";
+part '../../features/posts/presentaion/page/details_post/widgets/delete_post_btn.dart';
+part '../../features/posts/presentaion/page/details_post/widgets/edit_post_btn.dart';

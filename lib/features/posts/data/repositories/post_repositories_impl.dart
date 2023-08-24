@@ -33,8 +33,7 @@ class PostRepositoryImpl implements PostsRepository {
 
   @override
   EitherType addPost(Post post) async {
-    final PostModel postModel =
-        PostModel(iD: post.iD, title: post.title, body: post.body);
+    final PostModel postModel = PostModel(title: post.title, body: post.body);
     return await _getMessage(
       () {
         return remoteDataSource.addPost(postModel);

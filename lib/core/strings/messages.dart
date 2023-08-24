@@ -1,3 +1,3 @@
-const ADD_SUCCESS_MESSAGE = "Post Added Successfully";
-const DELETE_SUCCESS_MESSAGE = "Post Deleted Successfully";
-const UPDATE_SUCCESS_MESSAGE = "Post Updated Successfully";
+const addSuccessMessage = "Post Added Successfully";
+const deleteSuccessMessage = "Post Deleted Successfully";
+const updateSuccessMessage = "Post Updated Successfully";

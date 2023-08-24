@@ -12,7 +12,7 @@ class PostListWidget extends StatelessWidget {
     return ListView.separated(
       itemCount: posts.length,
       separatorBuilder: (BuildContext context, int index) {
-        return Divider(
+        return const Divider(
           thickness: 1,
         );
       },
@@ -24,7 +24,11 @@ class PostListWidget extends StatelessWidget {
           subtitle:
               Text(posts[index].body, style: const TextStyle(fontSize: 16)),
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-          onTap: () {},
+          onTap: () => AppRoutes.goMaterial(
+              context,
+              PostDetailsPage(
+                post: posts[index],
+              )),
         );
       },
     );

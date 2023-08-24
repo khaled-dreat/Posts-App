@@ -12,39 +12,53 @@ class AddDeleteUpdatePostBloc
       : super(AddDeleteUpdatePostInitial()) {
     on<AddDeleteUpdatePostEvent>((event, emit) async {
       if (event is AddPostEvent) {
-        emit(LoadingAddDeleteUpdatePost());
+        emit(LoadingAddDeleteUpdatePostState());
+
         final failureOrDoneMessage = await addPost(event.post);
-        _eitherDoneMessageOrErrorState(
-            ADD_SUCCESS_MESSAGE, failureOrDoneMessage);
+
+        emit(
+          _eitherDoneMessageOrErrorState(
+              failureOrDoneMessage, addSuccessMessage),
+        );
       } else if (event is UpdatePostEvent) {
-        emit(LoadingAddDeleteUpdatePost());
+        emit(LoadingAddDeleteUpdatePostState());
+
         final failureOrDoneMessage = await updatePost(event.post);
-        _eitherDoneMessageOrErrorState(
-            UPDATE_SUCCESS_MESSAGE, failureOrDoneMessage);
+
+        emit(
+          _eitherDoneMessageOrErrorState(
+              failureOrDoneMessage, updateSuccessMessage),
+        );
       } else if (event is DeletePostEvent) {
-        emit(LoadingAddDeleteUpdatePost());
+        emit(LoadingAddDeleteUpdatePostState());
+
         final failureOrDoneMessage = await deletePost(event.postId);
-        _eitherDoneMessageOrErrorState(
-            DELETE_SUCCESS_MESSAGE, failureOrDoneMessage);
+
+        emit(
+          _eitherDoneMessageOrErrorState(
+              failureOrDoneMessage, deleteSuccessMessage),
+        );
       }
     });
   }
 
   AddDeleteUpdatePostState _eitherDoneMessageOrErrorState(
-      String message, Either<Failure, Unit> either) {
+      Either<Failure, Unit> either, String message) {
     return either.fold(
-        (failure) =>
-            ErrorAddDeleteUpdatePost(message: _mapFailureToMessage(failure)),
-        (r) => MessageAddDeleteUpdatePost(message: message));
+      (failure) => ErrorAddDeleteUpdatePostState(
+        message: _mapFailureToMessage(failure),
+      ),
+      (_) => MessageAddDeleteUpdatePostState(message: message),
+    );
   }
 
   String _mapFailureToMessage(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
-        return SERVER_FAILURE_MESSAGE;
+        return serverFailureMessage;
 
       case OfflineFailure:
-        return OFFLINE_FAILURE_MESSAGE;
+        return oflineFailureMessage;
       default:
         return "Unexpected Error , Please try again later .";
     }
