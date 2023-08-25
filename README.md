@@ -1,5 +1,6 @@
 # post_app
 Implement Robert Martin's well-known Clean Architecture Uncle Bob and manage state Bloc.
+<br/>
 
 # What I learned
 - Flutter Clean Architecture.
@@ -10,7 +11,8 @@ Implement Robert Martin's well-known Clean Architecture Uncle Bob and manage sta
 -  Introduction to Bloc management state.
 -  Solve a problem by using a package.
 -  Solving dependency injection problems by using get_it package.
- 
+ <br/>
+
   # package
   ### Bloc for state management
   flutter_bloc: ^8.1.3
